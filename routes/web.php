@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TaskTagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 
 Route::middleware(['auth', 'verified'])
     ->name('tasks.')
@@ -27,6 +32,10 @@ Route::middleware(['auth', 'verified'])
         Route::put('edit/{task}', 'update')->name('update');
         Route::get('delete/{task}', 'destroy')->name('destroy');
         Route::get('complete/{task}', 'complete')->name('complete');
+
+        Route::get('{task}/tags', [TaskTagController::class, 'edit'])->name('tags.edit');
+        Route::post('{task}/tags', [TaskTagController::class, 'update'])->name('tags.update');
+        Route::delete('{task}/tags/{tag}', [TaskTagController::class, 'remove'])->name('tags.remove');
     });
 
     Route::middleware(['auth', 'verified'])

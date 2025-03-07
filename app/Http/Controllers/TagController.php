@@ -13,7 +13,7 @@ class TagController extends Controller
 {
     public function index(): View
     {
-        $tags = auth()->user()->tags;
+        $tags = auth()->user()->tags()->orderBy('name')->get();
 
         return view('tags.index', compact('tags'));
     }
@@ -29,7 +29,7 @@ class TagController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index')->with('success', 'Tag created successfully');
     }
 
     public function edit(Tag $tag): View
@@ -47,13 +47,13 @@ class TagController extends Controller
             'name' => $request->validated()['name'],
         ]);
 
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index')->with('success', 'Tag updated successfully');
     }
 
     public function destroy(Tag $tag): RedirectResponse
     {
-        $this->authorize('delete, $tag');
+        $this->authorize('delete', $tag);
         $tag->delete();
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index')->with('success', 'Tag deleted successfully');
     }
 }
