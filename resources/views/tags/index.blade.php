@@ -21,14 +21,20 @@
                                 <x-elements.link-button href="{{ route('tags.edit', $tag) }}">
                                     Edit
                                 </x-elements.link-button>
-                                <form class="inline" method="POST" action="{{ route('tags.destroy', $tag) }}">
+                                <event-button text="Delete" name="open-modal" value="confirm-tag-deletion-{{ $tag->id }}" class="danger"></event-button>
+
+                                <form-modal name="confirm-tag-deletion-{{ $tag->id }}" action="{{ route('tags.destroy', $tag) }}">
                                     @csrf
-                                    @method('DELETE')
-                                    <x-elements.link-button-danger type="submit" 
-                                        onclick="return confirm('Are you sure you want to delete this tag?')">
-                                        Delete
-                                    </x-elements.link-button-danger>
-                                </form>
+                                    @method('delete')
+
+                                    <h2 class="text-lg font-medium text-gray-900">
+                                        {{ __('Are you sure you want to delete this tag?') }}
+                                    </h2>
+
+                                    <p class="mt-1 text-sm text-gray-600">
+                                        {{ __('Once deleted, this tag will be removed from all tasks.') }}
+                                    </p>
+                                </form-modal>
                             </div>
                         </div>
                     @endforeach

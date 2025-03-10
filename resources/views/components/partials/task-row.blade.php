@@ -29,20 +29,23 @@
                 <div class="group relarive inline-flex items-center">
                     <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs mr-2 mb-2">
                         {{ $tag->name }}
-                        <a href="{{ route('tasks.tags.remove', ['task' => $task, 'tag' => $tag]) }}" class="ml-1 text-gray-500 hover:text-red-500"
-                        title="Remove Tag"
-                        >
-                        x
-                    </a>
+                        <a href="{{ route('tasks.tags.remove', ['task' => $task, 'tag' => $tag]) }}" 
+                           class="ml-1 text-gray-500 hover:text-red-500"
+                           title="Remove Tag">
+                            x
+                        </a>
                     </span>
                 </div>
             @endforeach
-            <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}" class="text-blue-700 hover:text-blue-500 text-xs ml-2">
+            <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}" 
+               class="text-blue-700 hover:text-blue-500 text-xs ml-2">
                 Edit Tags
             </a>
         @else
-            <span class="text-gray-500 text-xs mr-2">No tags</span>
-            <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}" class="text-blue-500 hover:text-blue-700 text-xs">Add Tags</a>
+            <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}" 
+               class="text-blue-500 hover:text-blue-700 text-xs">
+                Add Tags
+            </a>
         @endif
     </div>
 </div>
