@@ -27,9 +27,9 @@
                     <x-elements.link-button href="{{ route('tasks.home') }}">
                         Cancel
                     </x-elements.link-button>
-                    <x-elements.link-button type="submit">
+                    <x-elements.primary-button type="submit">
                         Update Tags
-                    </x-elements.link-button>
+                    </x-elements.primary-button>
                 </div>
             </form>
         </div>

@@ -26,9 +26,9 @@
                     <x-elements.link-button href="{{ route('tags.index') }}">
                         Cancel
                     </x-elements.link-button>
-                    <x-elements.link-button type="submit">
+                    <x-elements.primary-button type="submit">
                         Update Tag
-                    </x-elements.link-button>
+                    </x-elements.primary-button>
                 </div>
             </form>
         </div>

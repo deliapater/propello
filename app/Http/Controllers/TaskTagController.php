@@ -27,14 +27,14 @@ class TaskTagController extends Controller
             'tags.*' => 'exists:tags,id',
         ]);
 
-        if (!empty($validated['tags'])) {
-            $userTagIds = auth()->user()->tags()->pluck('id')->toArray();
-            $invalidTags = array_diff($validated['tags'], $userTagIds);
+        // if (!empty($validated['tags'])) {
+        //     $userTagIds = auth()->user()->tags()->pluck('id')->toArray();
+        //     $invalidTags = array_diff($validated['tags'], $userTagIds);
 
-            if (!empty($invalidTags)) {
-                return back()->withErrors(['tags' => 'Invalid tags selected.']);
-            }
-        }
+        //     if (!empty($invalidTags)) {
+        //         return back()->withErrors(['tags' => 'Invalid tags selected.']);
+        //     }
+        // }
 
         $task->tags()->sync($validated['tags'] ?? []);
 

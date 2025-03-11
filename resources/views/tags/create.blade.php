@@ -15,8 +15,8 @@
                 </div>
                 
                 <div class="flex justify-end space-x-2">
-                    <x-elements.link-button href="{{ route('tags.index') }}">Cancel</x-elements.link-button>
-                    <x-elements.link-button type="submit">Create Tag</x-elements.link-button>
+                    <x-elements.primary-button href="{{ route('tags.index') }}">Cancel</x-elements.link-button>
+                    <x-elements.primary-button type="submit">Create Tag</x-elements.link-button>
                 </div>
             </form>
         </div>
