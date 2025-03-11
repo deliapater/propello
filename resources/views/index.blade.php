@@ -5,9 +5,10 @@
         <div class="p-6 text-gray-900">
             @if($tasks->isNotEmpty())
                 <div class="w-full flex pb-2 border-b border-gray-200">
-                    <div class="w-5/12 font-semibold">Name</div>
+                    <div class="w-2/12 font-semibold">Name</div>
                     <div class="w-2/12 font-semibold">Created At</div>
-                    <div class="w-5/12 font-semibold">Actions</div>
+                    <div class="w-4/12 font-semibold">Actions</div>
+                    <div class="w-4/12 font-semibold"></div>
                 </div>
             @endif
 
