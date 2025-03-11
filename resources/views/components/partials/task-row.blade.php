@@ -34,7 +34,7 @@
                            title="Remove Tag">
                             x
                         </a>
-                    </span>
+                    </span>          
                 </div>
             @endforeach
             <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}" 
