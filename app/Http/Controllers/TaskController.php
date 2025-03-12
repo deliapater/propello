@@ -50,7 +50,7 @@ class TaskController extends Controller
 
         $task->update($request->validated());
 
-        return redirect()->to(route('tasks.home'));
+        return redirect()->route('tasks.home')->with('success', 'Task updated successfully!');
     }
 
     public function destroy(Task $task): RedirectResponse
