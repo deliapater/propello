@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session('success'))
+<div x-data="{ show: true }"
+    x-show="show"
+    x-init="setTimeout(() => show = false, 3000)"
+    class="fixed bottom-5 right-5 bg-green-600 text-black px-6 py-3 rounded shadow-lg">
+    {{ session('success') }}
+</div>
+@endif
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
             <div class="flex justify-between items-center mb-6">
