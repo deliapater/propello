@@ -12,10 +12,14 @@
                 <x-forms.text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="$task->name" required autofocus />
                 <x-forms.input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
-
-            <x-elements.primary-button>
-                Update
-            </x-elements.primary-button>
+            <div class="space-x-2">
+                <x-elements.primary-button>
+                    Update
+                </x-elements.primary-button>
+                <x-elements.link-button href="{{ route('tasks.home') }}">
+                    Cancel
+                </x-elements.link-button>
+            </div>
         </form>
     </div>
 </div>
