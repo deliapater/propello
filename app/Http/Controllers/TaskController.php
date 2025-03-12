@@ -41,7 +41,7 @@ class TaskController extends Controller
             )
         );
 
-        return redirect()->to(route('tasks.home'));
+        return redirect()->route('tasks.home')->with('success', 'Task created successfully!');
     }
 
     public function update(UpdateTaskRequest $request, Task $task): RedirectResponse

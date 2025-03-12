@@ -7,6 +7,7 @@
 
         <title>{{ config('app.name', 'Propello Tech Test') }}</title>
         <link rel="preconnect" href="https://fonts.bunny.net">
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
