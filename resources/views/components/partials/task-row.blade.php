@@ -27,13 +27,11 @@
         @if($task->tags->isNotEmpty())
         @foreach($task->tags as $tag)
         <div class="group relarive inline-flex items-center">
-            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs mr-2 mb-2">
+            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs mr-2">
                 {{ $tag->name }}
-                <a href="{{ route('tasks.tags.remove', ['task' => $task, 'tag' => $tag]) }}"
-                    class="ml-1 text-gray-500 hover:text-red-500"
-                    title="Remove Tag">
+                <x-elements.remove-tag href="{{ route('tasks.tags.remove', ['task' => $task, 'tag' => $tag]) }}">
                     x
-                </a>
+                </x-elements.remove-tag>
             </span>
         </div>
         @endforeach
