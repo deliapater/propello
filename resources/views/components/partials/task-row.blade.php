@@ -37,18 +37,9 @@
             </span>
         </div>
         @endforeach
-        <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}"
-            class="text-blue-700 hover:text-blue-500 text-xs ml-2">
-            Edit Tags
-        </a>
-        @else
-        <a href="{{ route('tasks.tags.edit', ['task' => $task]) }}"
-            class="text-blue-500 hover:text-blue-700 text-xs">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-            Add Tags
-        </a>
         @endif
+        <x-elements.link-button href="{{ route('tasks.tags.edit', ['task' => $task]) }}">
+            + Add Tags
+        </x-elements.link-button>
     </div>
 </div>

@@ -4,7 +4,7 @@
 <div x-data="{ show: true }"
     x-show="show"
     x-init="setTimeout(() => show = false, 3000)"
-    class="fixed bottom-5 right-5 bg-green-600 text-black px-6 py-3 rounded shadow-lg">
+    class="fixed top-20 right-10 bg-green-300 text-black px-6 py-3 rounded shadow-lg">
     {{ session('success') }}
 </div>
 @endif
