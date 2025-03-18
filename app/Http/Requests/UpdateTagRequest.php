@@ -23,7 +23,7 @@ class UpdateTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:tags,name,' . $this->route('tag')->id
+            'name' => 'required|string|max:50' . $this->route('tag')->id
         ];
     }
 }
