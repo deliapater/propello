@@ -4,10 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Tag;
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateTaskTagRequest;
+use App\Http\Requests\StoreTaskTagRequest;
 
 class TaskTagController extends Controller
 {
+    public function store(StoreTaskTagRequest $request, Task $task)
+    {
+        $tag = Tag::firstOrCreate([
+            'name' => $request->tag_name,
+            'user_id' => auth()->id()
+        ]);
+
+        if (!$task->tags->contains($tag->id)) {
+            $task->tags()->attach($tag->id);
+        }
+
+        return back()->with('success', 'Tag added successfully');
+    }
+
     public function edit(Task $task)
     {
         $this->authorize('update', $task);
@@ -18,27 +33,11 @@ class TaskTagController extends Controller
         return view('tasks.tags.edit', compact('task', 'availableTags', 'selectedTags'));
     }
 
-    public function update(Request $request, Task $task)
+    public function update(UpdateTaskTagRequest $request, Task $task)
     {
-        $this->authorize('update', $task);
+        $task->tags()->sync($request->validated('tags') ?? []);
 
-        $validated = $request->validate([
-            'tags' => 'array',
-            'tags.*' => 'exists:tags,id',
-        ]);
-
-        if (!empty($validated['tags'])) {
-            $userTagIds = auth()->user()->tags()->pluck('id')->toArray();
-            $invalidTags = array_diff($validated['tags'], $userTagIds);
-
-            if (!empty($invalidTags)) {
-                return back()->withErrors(['tags' => 'Invalid tags selected.']);
-            }
-        }
-
-        $task->tags()->sync($validated['tags'] ?? []);
-
-        return redirect()->route('tasks.home')->with('success', 'Tags updated successfully'); 
+        return redirect()->route('tasks.home')->with('success', 'Tags updated successfully');
     }
 
     public function remove(Task $task, Tag $tag)

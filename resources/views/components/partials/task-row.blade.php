@@ -2,7 +2,7 @@
 'task' => null,
 ])
 
-<div class="w-full flex py-2 border-b border-gray-100 items-center">
+<div class="w-full flex py-2 border-b border-gray-100 items-center" x-data="{ showTagInput: false }" x-init="console.log('Alpine initialized', showTagInput)">
     <div class="w-2/12 flex items-center {{ $task?->complete ? 'line-through' : '' }}">
         {{ $task?->name }}
     </div>
@@ -36,8 +36,32 @@
         </div>
         @endforeach
         @endif
-        <x-elements.link-button href="{{ route('tasks.tags.edit', ['task' => $task]) }}">
-            + Add Tags
-        </x-elements.link-button>
+
+        <div x-show="!showTagInput" style="display: none;">
+            <button
+                type="button"
+                class="text-blue-500 hover:text-blue-700 cursor-pointer"
+                x-on:click="showTagInput = true">
+                + Add Tags
+            </button>
+        </div>
+
+        <div x-show="showTagInput" style="display: none;">
+            <form method="POST" action="{{ route('tasks.tags.store', ['task' => $task]) }}" class="flex items-center space-x-2">
+                @csrf
+                <x-forms.text-input
+                    type="text"
+                    name="tag_name"
+                    placeholder="Enter tag name"
+                    class="text-sm"
+                    @keydown.escape="showTagInput = false" />
+                <x-elements.primary-button type="submit">
+                    Add
+                </x-elements.primary-button>
+                <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" @click.prevent="showTagInput = false">
+                    Cancel
+                </button>
+            </form>
+        </div>
     </div>
 </div>
