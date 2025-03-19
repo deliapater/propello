@@ -26,9 +26,6 @@
             <x-elements.link-button href="{{ route('tasks.create') }}">
                 Add Task
             </x-elements.link-button>
-            <x-elements.link-button href="{{ route('tags.index') }}">
-                Manage Tags
-            </x-elements.link-button>
         </div>
     </div>
 </div>
