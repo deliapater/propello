@@ -40,7 +40,6 @@
         <div x-show="!showTagInput" style="display: none;">
             <x-elements.link-button
                 type="button"
-                class="text-blue-500 hover:text-blue-700 cursor-pointer"
                 x-on:click="showTagInput = true">
                 + Add Tags
             </x-elements.link-button>
