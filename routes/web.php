@@ -33,8 +33,6 @@ Route::middleware(['auth', 'verified'])
         Route::get('delete/{task}', 'destroy')->name('destroy');
         Route::get('complete/{task}', 'complete')->name('complete');
 
-        Route::get('{task}/tags', [TaskTagController::class, 'edit'])->name('tags.edit');
-        Route::post('{task}/tags', [TaskTagController::class, 'update'])->name('tags.update');
         Route::post('{task}/tags/store', [TaskTagController::class, 'store'])->name('tags.store');
         Route::get('{task}/tags/{tag}', [TaskTagController::class, 'remove'])->name('tags.remove');
     });

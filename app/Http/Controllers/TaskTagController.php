@@ -23,23 +23,6 @@ class TaskTagController extends Controller
         return back()->with('success', 'Tag added successfully');
     }
 
-    public function edit(Task $task)
-    {
-        $this->authorize('update', $task);
-
-        $availableTags = auth()->user()->tags()->orderBy('name')->get();
-        $selectedTags = $task->tags->pluck('id')->toArray();
-
-        return view('tasks.tags.edit', compact('task', 'availableTags', 'selectedTags'));
-    }
-
-    public function update(UpdateTaskTagRequest $request, Task $task)
-    {
-        $task->tags()->sync($request->validated('tags') ?? []);
-
-        return redirect()->route('tasks.home')->with('success', 'Tags updated successfully');
-    }
-
     public function remove(Task $task, Tag $tag)
     {
         $this->authorize('update', $task);
